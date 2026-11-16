@@ -1,7 +1,7 @@
 public class Producto {
-    String nombre;
-    double precio;
-    int stock;
+    protected String nombre;
+    protected double precio;
+    protected int stock;
 
     public Producto(String nombre, double precio, int stock) {
         this.nombre = nombre;
@@ -10,20 +10,23 @@ public class Producto {
     }
 
     public void vender(int cantidad) {
-        if (cantidad <= stock) {
-            stock = stock - cantidad;
+        if (cantidad <= stock && cantidad > 0) {
+            stock -= cantidad;
             System.out.println("Vendido: " + cantidad + " unidades de " + nombre);
         } else {
             System.out.println("No hay suficiente stock de " + nombre);
         }
     }
 
+
     public void reabastecer(int cantidad) {
-        stock = stock + cantidad;
-        System.out.println("Se agregaron " + cantidad + " unidades a " + nombre);
+        if (cantidad > 0) {
+            stock += cantidad;
+            System.out.println("Se agregaron " + cantidad + " unidades a " + nombre);
+        }
     }
 
     public void mostrarInfo() {
-        System.out.println("Producto: " + nombre + " | Precio: $" + precio + " | Stock: " + stock);
+        System.out.printf("Producto: %s | Precio: $%.2f | Stock: %d", nombre, precio, stock);
     }
 }

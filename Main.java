@@ -1,19 +1,29 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("--- Mi Tienda de Articulos ---");
+        System.out.println("=== SISTEMA DE INVENTARIO CON HERENCIA (POO) ===
+");
 
-        Producto p1 = new Producto("Laptop", 850.00, 8);
-        Producto p2 = new Producto("Mouse", 20.00, 15);
+        ProductoElectronico laptop = new ProductoElectronico("Laptop Pro 15", 850.00, 8, "Lenovo", 12);
+        Accesorio mouse = new Accesorio("Mouse Optico", 20.00, 15, "USB-C / Bluetooth", "Windows / macOS");
 
-        p1.mostrarInfo();
-        p2.mostrarInfo();
+        System.out.println("--- Inventario Inicial ---");
+        laptop.mostrarInfo();
+        mouse.mostrarInfo();
 
-        System.out.println("\n--- Probando movimientos ---");
-        p1.vender(3); 
-        p2.reabastecer(5);
+        System.out.println("
+--- Movimientos de Inventario (Metodos Heredados) ---");
+        laptop.vender(3);       // Heredado de Producto
+        mouse.reabastecer(5);   // Heredado de Producto
 
-        System.out.println("\n--- Estado Final ---");
-        p1.mostrarInfo();
-        p2.mostrarInfo();
+        System.out.println("
+--- Operaciones Especializadas (Metodos Exclusivos) ---");
+        laptop.extenderGarantia(12);      // Exclusivo de ProductoElectronico
+        mouse.aplicarDescuentoLote(15);   // Exclusivo de Accesorio
+
+        System.out.println("
+--- Estado Final del Inventario ---");
+        laptop.mostrarInfo();
+        mouse.mostrarInfo();
     }
 }
+
